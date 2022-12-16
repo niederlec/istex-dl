@@ -3,7 +3,7 @@ name: Docker Image CI
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*.*.*'
       - '*-release'
 
 jobs:
@@ -29,5 +29,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/istex-dl:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/istex-dl:${{ github.ref_name }}
 
